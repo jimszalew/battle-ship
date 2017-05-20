@@ -1,17 +1,15 @@
 class Ship
 
+  attr_reader :name, :size
+
   def initialize(name)
-    @name     = name
-    @size     = size
-    # @position =
+    @name = name
+    @size = sizes[name]
   end
 
-  def size
+  def sizes
     { "Patrol_Boat" => 2,
-      "Destroyer"   => 3,
       "Submarine"   => 3,
-      "Battleship"  => 4,
-      "Carrier"     => 5
     }
   end
 end

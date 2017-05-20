@@ -7,6 +7,10 @@ require './lib/ship'
 class Runner
   include Messages
 
+  def initialize
+    @game_over = false
+  end
+
   def start
     welcome
     request_input
@@ -48,13 +52,13 @@ class Runner
     input = gets.chomp
     selection(input)
   end
-  #
+
   # def start_game
   #   @start_time = Time.now
-  #   initialize_players #this method will setup boards
+  #   initialize_players #new instance of Computer, Player
   #   player_ship_board
   #   @player.show_board
-  #   shot_board
+  #   shot_tracker
   #   run_game
   # end
   #
