@@ -18,7 +18,7 @@ class Runner
       quits
     else
       invalid_input
-      request_inpu
+      request_input
     end
   end
 
@@ -39,5 +39,6 @@ class Runner
     input = gets.chomp
     selection(input)
   end
+
 
 end
