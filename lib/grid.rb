@@ -8,7 +8,7 @@ class Grid
    @value = value
    @grid = Array.new(size) { Array.new(size, value) }
  end
-# make an array of columns
+
  def columns(size)
    (1..size).to_a
  end

@@ -35,7 +35,9 @@ class Runner
   end
 
   def invalid?(input)
-    !play?(input) && !instructions?(input) && !quit?(input)
+      input != "p" && input != "play" &&
+      input != "i" && input != "instructions" &&
+      input != "q" && input != "quit"
   end
 
   def request_input
@@ -43,6 +45,4 @@ class Runner
     input = gets.chomp
     selection(input)
   end
-
-
 end

@@ -17,6 +17,6 @@ module Messages
   end
 
   def invalid_input
-    "Please enter a valid choice p, i, or q."
+    puts "Please enter a valid choice p, i, or q."
   end
 end

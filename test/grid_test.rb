@@ -20,6 +20,4 @@ class GridTest < Minitest::Test
 
     assert_equal 26, grid.rows.length
   end
-
-
 end
