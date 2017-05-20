@@ -1,4 +1,8 @@
 require './lib/messages_module'
+require './lib/computer'
+require './lib/grid'
+require './lib/player'
+require './lib/ship'
 
 class Runner
   include Messages
@@ -18,7 +22,7 @@ class Runner
     elsif quit?(input)
       quits
     elsif play?(input)
-      ship_placement
+      start_game
     end
   end
 
@@ -35,9 +39,8 @@ class Runner
   end
 
   def invalid?(input)
-      input != "p" && input != "play" &&
-      input != "i" && input != "instructions" &&
-      input != "q" && input != "quit"
+    array = ["p","play","i","instructions","q","quit"]
+      !array.include?(input)
   end
 
   def request_input
@@ -45,4 +48,20 @@ class Runner
     input = gets.chomp
     selection(input)
   end
+  #
+  # def start_game
+  #   @start_time = Time.now
+  #   initialize_players #this method will setup boards
+  #   player_ship_board
+  #   @player.show_board
+  #   shot_board
+  #   run_game
+  # end
+  #
+  # def initialize_players
+  #   @computer = Computer.new
+  #   @player   = Player.new
+  # end
+
+
 end

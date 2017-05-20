@@ -20,4 +20,5 @@ class RunnerTest < Minitest::Test
     assert game.invalid?("g")
     refute game.invalid?("p")
   end
+
 end
