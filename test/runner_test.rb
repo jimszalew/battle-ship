@@ -15,6 +15,8 @@ class RunnerTest < Minitest::Test
     assert_nil game.selection("quit")
   end
 
-  def test_it_can_
+  def test_it_can_spot_invalid_responses
+    
+  end
 
 end

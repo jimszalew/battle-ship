@@ -9,16 +9,16 @@ class Runner
   end
 
   def selection(input)
-    if play?(input)
-      ship_placement
+    if invalid?(input)
+      invalid_input
+      request_input
     elsif instructions?(input)
       read_instructions
       request_input
     elsif quit?(input)
       quits
-    else
-      invalid_input
-      request_input
+    elsif play?(input)
+      ship_placement
     end
   end
 
@@ -32,6 +32,10 @@ class Runner
 
   def quit?(input)
     input == "q" || input == "quit"
+  end
+
+  def invalid?(input)
+    !play?(input) && !instructions?(input) && !quit?(input)
   end
 
   def request_input
