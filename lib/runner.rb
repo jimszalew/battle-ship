@@ -53,19 +53,19 @@ class Runner
     selection(input)
   end
 
-  def start_game
-    @start_time = Time.now
-    initialize_players # new instance of Computer, Player
-    startup_message
-  end
-
-  def initialize_players
-    @computer = Computer.new
-    @player   = Player.new
-  end
+  # def start_game
+  #   @start_time = Time.now
+  #   initialize_players
+  #   startup_message
+  # end
+  #
+  # def initialize_players
+  #   @computer = Computer.new
+  #   @player   = Player.new
+  # end
 
   # shot sequences
-  #
+  ## display board states and shot/miss/hit counts
   # end game check
 
 

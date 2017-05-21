@@ -14,7 +14,7 @@ class Grid
  end
 
  def rows
-   ("A".."Z").to_a
+   ("A".."D").to_a
  end
 
  def print_grid

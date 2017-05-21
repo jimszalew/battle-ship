@@ -26,8 +26,7 @@ class ComputerTest < Minitest::Test
     assert_equal 2, create_ships.count
     assert_instance_of Array, create_ships
     assert_instance_of Ship, create_ships[1]
+    assert_equal "Patrol_Boat", ships.first.name
   end
 
-  def test_it_can_place_head_of_first_ship
-  end
 end

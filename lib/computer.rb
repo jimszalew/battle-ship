@@ -5,7 +5,7 @@ require './lib/placement_module'
 class Computer
 
   include Placement
-  
+
   def initialize(board_size = 4, number_of_ships = 2)
     @board_size = board_size
     @number_of_ships = number_of_ships
@@ -15,7 +15,6 @@ class Computer
     Grid.new(4)
   end
 
-
-
-
+  def ship_placement(ship, board_size)
+  end
 end
