@@ -29,4 +29,11 @@ class ComputerTest < Minitest::Test
     assert_equal "Patrol_Boat", ships.first.name
   end
 
+  def test_it_can_place_head_of_ship
+    computer = Computer.new
+    submarine = Ship.new("Submarine")
+    submarine.coordinates << [0,0]
+
+    assert_equal 1, submarine.coordinates.count
+  end
 end

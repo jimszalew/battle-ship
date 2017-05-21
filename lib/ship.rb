@@ -1,11 +1,13 @@
 class Ship
 
   attr_reader :name, :size
-  attr_accessor :status, :location
+  attr_accessor :status, :coordinates
 
   def initialize(name)
     @name = name
     @size = boats[name]
+    @coordinates = []
+    @status = "afloat"
   end
 
   def boats
