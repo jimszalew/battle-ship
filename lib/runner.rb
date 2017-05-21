@@ -8,7 +8,7 @@ class Runner
   include Messages
 
   def initialize
-    @game_over = false
+
   end
 
   def start
@@ -53,11 +53,10 @@ class Runner
     selection(input)
   end
 
-  # def start_game
-  #   @start_time = Time.now
-  #   initialize_players
-  #   startup_message
-  # end
+  def start_game
+    @start_time = Time.now
+    startup_message
+  end
   #
   # def initialize_players
   #   @computer = Computer.new

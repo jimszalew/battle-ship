@@ -2,7 +2,7 @@ require './lib/runner'
 
 class Battleship
   def initialize
-    @game = Runner.new.start
+    Runner.new.start
   end
 end
 

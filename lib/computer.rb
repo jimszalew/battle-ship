@@ -16,5 +16,6 @@ class Computer
   end
 
   def ship_placement(ship, board_size)
+    
   end
 end
