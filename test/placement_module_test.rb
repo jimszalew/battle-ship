@@ -8,5 +8,5 @@ require './lib/placement'
 
 class TestPlacement < Minitest::Test
 
-
+  
 end

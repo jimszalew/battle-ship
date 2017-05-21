@@ -1,8 +1,10 @@
 require 'minitest/autorun'
 require 'minitest/pride'
 require './lib/computer'
+require './lib/placement_module'
 
 class ComputerTest < Minitest::Test
+  include Placement
 
   def test_computer_opponent_exists
     computer = Computer.new
@@ -21,7 +23,11 @@ class ComputerTest < Minitest::Test
     computer = Computer.new
     ships = computer.create_ships
 
-    assert_instance of Ship, boat1
-    assert_instance of Ship, boat2
+    assert_equal 2, create_ships.count
+    assert_instance_of Array, create_ships
+    assert_instance_of Ship, create_ships[1]
+  end
+
+  def test_it_can_place_head_of_first_ship
   end
 end

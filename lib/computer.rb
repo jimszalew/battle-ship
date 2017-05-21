@@ -1,8 +1,11 @@
 require './lib/grid'
 require './lib/ship'
+require './lib/placement_module'
 
 class Computer
 
+  include Placement
+  
   def initialize(board_size = 4, number_of_ships = 2)
     @board_size = board_size
     @number_of_ships = number_of_ships
@@ -12,10 +15,7 @@ class Computer
     Grid.new(4)
   end
 
-  def create_ships
-    ships = [boat1, boat2]
-    boat1 = Ship.new("Patrol_Boat")
-    boat2 = Ship.new("Submarine")
-    ships # returns an array of two new ships
-  end
+
+
+
 end
