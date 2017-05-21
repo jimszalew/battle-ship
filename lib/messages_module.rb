@@ -9,7 +9,7 @@ module Messages
   end
 
   def read_instructions
-    puts File.read("./lib/instructions.txt")
+    puts File.read("./lib/instructions.txt") + "\n"
   end
 
   def quits
