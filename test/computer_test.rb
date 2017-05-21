@@ -59,4 +59,10 @@ class ComputerTest < Minitest::Test
     assert_equal 2, patrol.coordinates.count
     assert_equal 3, submarine.coordinates.count
   end
+
+  def test_it_can_make_ships_horizontal_or_vertical
+    computer = Computer.new
+    patrol = Ship.new("Patrol_Boat")
+    patrol.coordinates << [0,0]
+  end
 end

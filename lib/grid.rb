@@ -3,10 +3,10 @@ class Grid
              :value,
              :grid
 
- def initialize(size = 4, value = " ")
+ def initialize#(size = 4, value = " ")
    @size = size
    @value = value
-   @grid = Array.new(size) { Array.new(size, value) }
+   @grid = Array.new(4) { Array.new(4, " ") }
  end
 
  def columns(size)

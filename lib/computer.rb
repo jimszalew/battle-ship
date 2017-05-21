@@ -12,7 +12,7 @@ class Computer
   end
 
   def board
-    Grid.new(4)
+    Grid.new
   end
 
   def ship_placement(ship, board_size)
