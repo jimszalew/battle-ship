@@ -23,7 +23,9 @@ class RunnerTest < Minitest::Test
 
   def test_it_can_initialize_a_computer_opponent
     game = Runner.new
-    computer = Computer.new
+    game.initialize_players
+
+    assert_instance_of Computer, @computer
   end
 
 end

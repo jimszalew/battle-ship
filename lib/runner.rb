@@ -57,11 +57,10 @@ class Runner
     @start_time = Time.now
     startup_message
   end
-  #
-  # def initialize_players
-  #   @computer = Computer.new
-  #   @player   = Player.new
-  # end
+
+  def initialize_players
+    @computer = Computer.new
+  end
 
   # shot sequences
   ## display board states and shot/miss/hit counts
