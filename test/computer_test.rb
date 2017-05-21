@@ -36,4 +36,27 @@ class ComputerTest < Minitest::Test
 
     assert_equal 1, submarine.coordinates.count
   end
+
+  def test_it_can_place_full_patrol_boat
+    computer = Computer.new
+    patrol = Ship.new("Patrol_Boat")
+    patrol.coordinates << [0,0]
+    patrol.coordinates << [0,1]
+
+    assert_equal 2, patrol.coordinates.count
+  end
+
+  def test_it_can_place_sub_and_patrol
+    computer = Computer.new
+    patrol = Ship.new("Patrol_Boat")
+    submarine = Ship.new("Submarine")
+    patrol.coordinates << [0,0]
+    patrol.coordinates << [0,1]
+    submarine.coordinates << [1,0]
+    submarine.coordinates << [1,1]
+    submarine.coordinates << [1,2]
+
+    assert_equal 2, patrol.coordinates.count
+    assert_equal 3, submarine.coordinates.count
+  end
 end

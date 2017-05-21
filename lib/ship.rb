@@ -11,8 +11,9 @@ class Ship
   end
 
   def boats
-    { "Patrol_Boat" => 2,
-      "Submarine"   => 3,
+    {
+    "Patrol_Boat" => 2,
+    "Submarine"   => 3,
     }
   end
 end
