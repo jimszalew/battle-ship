@@ -31,4 +31,16 @@ module Messages
   def three_unit_placement_message
     puts "Enter the squares for the three-unit ship."
   end
+
+  def placement_error
+    puts "Invalid coordinates, please re-enter coordinates"
+  end
+
+  def invalid_tail_message
+    puts "Invalid tail position."
+  end
+
+  def abcd
+    ("A".."D").to_a
+  end
 end

@@ -28,4 +28,26 @@ class PlayerTest < Minitest::Test
     assert_instance_of Ship, player.create_ships[1]
     assert_equal "Patrol_Boat", ships.first.name
   end
+
+  def test_it_can_input_valid_head_tail_pairs_of_coordinates
+    player = Player.new
+    patrol = Ship.new("Patrol_Boat")
+    submarine = Ship.new("Submarine")
+
+    assert player.valid_placement?(["A","1"], ["A","2"])
+    assert player.valid_placement?(["A","1"], ["B","1"])
+    refute player.valid_placement?(["A","1"], ["B","2"])
+    refute player.valid_placement?(["B","1"], ["C","4"])
+  end
+
+  def test_ships_are_valid_length
+    player = Player.new
+    patrol = Ship.new("Patrol_Boat")
+    submarine = Ship.new("Submarine")
+
+    assert player.valid_length?(["A","1"], ["A","2"], patrol)
+    assert player.valid_length?(["A","1"], ["A","3"], submarine)
+    refute player.valid_length?(["A","1"], ["A","4"], patrol)
+    refute player.valid_length?(["A","1"], ["A","2"], submarine)
+  end
 end
