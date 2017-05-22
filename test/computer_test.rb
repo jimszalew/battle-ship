@@ -37,7 +37,7 @@ class ComputerTest < Minitest::Test
     assert_equal 1, submarine.coordinates.count
   end
 
-  def test_it_can_place_two_coordinates
+  def test_it_can_assign_two_coordinates
     computer = Computer.new
     patrol = Ship.new("Patrol_Boat")
     patrol.coordinates << [0,0]
@@ -61,9 +61,23 @@ class ComputerTest < Minitest::Test
   end
 
   def test_it_wont_overlap_ships
+    skip
     computer = Computer.new
 
     assert_equal [], computer.ships.first.coordinates & computer.ships.last.coordinates
   end
 
+  def test_it_places_ships
+    computer = Computer.new
+
+    assert_instance_of Array, computer.ships
+    refute computer.ships.first.coordinates.empty?
+  end
+
+  def test_it_wont_make_the_same_shot_twice
+    computer = Computer.new
+    (computer.shoot) * 6
+
+    assert_nil computer.shots.uniq!
+  end
 end

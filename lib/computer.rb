@@ -82,6 +82,20 @@ class Computer
       ship_placement(ship, board_size)
     end
   end
+
+  def shoot
+    max = computer_shots.size
+    shot = [rand(max).to_i, rand(max).to_i]
+    validate_shot(shot)
+  end
+
+  def validate_shot(shot)
+    if @shots.include?(shot)
+      shoot
+    else
+      @shots << shot
+    end
+  end
 end
 # binding.pry
 ""
