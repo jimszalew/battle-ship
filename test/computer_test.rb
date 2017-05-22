@@ -61,7 +61,6 @@ class ComputerTest < Minitest::Test
   end
 
   def test_it_wont_overlap_ships
-    skip
     computer = Computer.new
 
     assert_equal [], computer.ships.first.coordinates & computer.ships.last.coordinates

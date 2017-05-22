@@ -73,7 +73,7 @@ class Computer
   end
 
   def validate_coordinates(ship, board_size)
-    @all_ship_coordinates << ship
+    @all_ship_coordinates << ship.coordinates
     if @all_ship_coordinates.flatten(1).uniq!.nil?
       @ships << ship
     else
