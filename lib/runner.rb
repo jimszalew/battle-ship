@@ -61,7 +61,7 @@ class Runner
   def start_players
     @computer = Computer.new
     startup_message
-    #@player   = Player.new
+    @player = Player.new
   end
 
   # shot sequences

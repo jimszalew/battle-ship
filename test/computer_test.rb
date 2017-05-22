@@ -14,7 +14,7 @@ class ComputerTest < Minitest::Test
 
   def test_it_can_setup_a_board
     computer = Computer.new
-    board = computer.board
+    board = Grid.new
 
     assert_instance_of Grid, board
   end
@@ -60,6 +60,10 @@ class ComputerTest < Minitest::Test
     assert_equal 3, submarine.coordinates.count
   end
 
+  def test_it_wont_overlap_ships
+    computer = Computer.new
 
+    assert_equal [], computer.ships.first.coordinates & computer.ships.last.coordinates
+  end
 
 end

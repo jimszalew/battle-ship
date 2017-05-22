@@ -1,9 +1,12 @@
 require './lib/grid'
 require './lib/ship'
-# require './lib/placement_module'
+require './lib/placement_module'
 require 'pry'
+
 class Computer
-  # include Placement
+
+  include Placement
+
   attr_reader :computer_arrangement,
               :computer_shots,
               :ships,
@@ -14,22 +17,9 @@ class Computer
     @computer_arrangement = Grid.new
     @computer_shots = Grid.new
     @ships = []
-    @all_ship_coordinates
+    @all_ship_coordinates = []
     @shots = []
     place(board_size, number_of_ships)
-  end
-
-  def create_ships(number_of_ships = 2)
-    @ships = ["Patrol_Boat", "Submarine"]
-    @ships = @ships[0..(number_of_ships - 1)]
-    @ships.map { |ship| Ship.new(ship)}
-  end
-
-  def place(board_size = 4, number_of_ships = 2)
-    @ships = create_ships
-    @ships.each do |ship|
-      ship_placement(ship, board_size)
-    end
   end
 
   def ship_placement(ship, board_size)
@@ -83,7 +73,15 @@ class Computer
   end
 
   def validate_coordinates(ship, board_size)
+    @all_ship_coordinates << ship
+    if @all_ship_coordinates.flatten(1).uniq!.nil?
+      @ships << ship
+    else
+      @all_ship_coordinates.delete_at(-1)
+      ship.reset
+      ship_placement(ship, board_size)
+    end
   end
 end
-binding.pry
+# binding.pry
 ""

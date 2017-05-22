@@ -20,5 +20,7 @@ class Ship
     }
   end
 
-
+  def reset
+    @coordinates = []
+  end
 end
