@@ -21,6 +21,16 @@ class RunnerTest < Minitest::Test
     refute game.invalid?("p")
   end
 
+  def test_it_can_make_a_computer_friend_to_play_with
+    game = Runner.new
+    game.start_players
+    computer = Computer.new
+
+    assert_instance_of Computer, computer
+  end
+
+
+
 
 
 end
