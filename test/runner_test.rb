@@ -21,11 +21,6 @@ class RunnerTest < Minitest::Test
     refute game.invalid?("p")
   end
 
-  def test_it_can_initialize_a_computer_opponent
-    game = Runner.new
-    game.initialize_players
 
-    assert_instance_of Computer, @computer
-  end
 
 end

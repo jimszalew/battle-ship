@@ -43,8 +43,8 @@ class Runner
   end
 
   def invalid?(input)
-    array = ["p","play","i","instructions","q","quit"]
-      !array.include?(input)
+    valid = ["p","play","i","instructions","q","quit"]
+      !valid.include?(input)
   end
 
   def request_input
@@ -55,11 +55,13 @@ class Runner
 
   def start_game
     @start_time = Time.now
-    startup_message
+    start_players
   end
 
-  def initialize_players
+  def start_players
     @computer = Computer.new
+    startup_message
+    #@player   = Player.new
   end
 
   # shot sequences

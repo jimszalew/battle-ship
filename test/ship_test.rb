@@ -17,4 +17,10 @@ class ShipTest < Minitest::Test
     assert_equal 2, boat1.size
     assert_equal 3, boat2.size
   end
+
+  def test_it_knows_it_is_sunk
+    patrol = Ship.new("Patrol_Boat")
+    
+  end
+
 end

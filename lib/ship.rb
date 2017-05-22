@@ -1,13 +1,16 @@
 class Ship
 
   attr_reader :name, :size
-  attr_accessor :status, :coordinates
+  attr_accessor :coordinates
 
-  def initialize(name)
+  def initialize(name, afloat = true)
     @name = name
     @size = boats[name]
     @coordinates = []
-    @status = "afloat"
+  end
+
+  def <<(cell)
+    coordinates << cell
   end
 
   def boats
@@ -16,4 +19,6 @@ class Ship
     "Submarine"   => 3,
     }
   end
+
+
 end
