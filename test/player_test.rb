@@ -50,4 +50,14 @@ class PlayerTest < Minitest::Test
     refute player.valid_length?(["A","1"], ["A","4"], patrol)
     refute player.valid_length?(["A","1"], ["A","2"], submarine)
   end
+
+  def test_ships_dont_wrap_around_board
+    player = Player.new
+    patrol = Ship.new("Patrol_Boat")
+    submarine = Ship.new("Submarine")
+
+    assert player.no_wrap?(["A","1"], ["A","4"])
+    refute player.no_wrap?(["D","4"], ["D","1"])
+    refute player.no_wrap?(["D","1"], ["A","1"])
+  end
 end

@@ -43,4 +43,8 @@ module Messages
   def abcd
     ("A".."D").to_a
   end
+
+  def ship_wrap_message
+    puts "Ships can not wrap around the board."
+  end
 end
