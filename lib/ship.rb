@@ -3,10 +3,11 @@ class Ship
   attr_reader :name, :size
   attr_accessor :coordinates
 
-  def initialize(name, afloat = true)
+  def initialize(name)
     @name = name
     @size = boats[name]
     @coordinates = []
+    @hits = 0
   end
 
   def <<(cell)
@@ -22,5 +23,9 @@ class Ship
 
   def reset
     @coordinates = []
+  end
+
+  def sunk?
+    @hits >= @size
   end
 end

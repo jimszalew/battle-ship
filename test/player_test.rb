@@ -57,7 +57,15 @@ class PlayerTest < Minitest::Test
     submarine = Ship.new("Submarine")
 
     assert player.no_wrap?(["A","1"], ["A","4"])
-    refute player.no_wrap?(["D","4"], ["D","1"])
-    refute player.no_wrap?(["D","1"], ["A","1"])
+    refute player.no_wrap?(["D","4"], ["D","6"])
+    refute player.no_wrap?(["D","1"], ["F","1"])
+  end
+
+  def test_ships_dont_overlap
+    player = Player.new
+    patrol = Ship.new("Patrol_Boat")
+    submarine = Ship.new("Submarine")
+
+    assert 
   end
 end

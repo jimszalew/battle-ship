@@ -28,4 +28,6 @@ class RunnerTest < Minitest::Test
 
     assert_instance_of Computer, computer
   end
+
+  
 end

@@ -70,13 +70,13 @@ class Player
   end
 
   def no_wrap?(head, tail)
-    no_wrap = false
+    wrapped = false
     if no_horizontal_wrap(head, tail) && no_vertical_wrap(head, tail)
-      no_wrap = true
+      wrapped = true
     else
       ship_wrap_message
     end
-    no_wrap
+    wrapped
   end
 
   def no_vertical_wrap(head, tail)
@@ -85,11 +85,11 @@ class Player
   end
 
   def no_horizontal_wrap(head, tail)
-    rows = (1..player_arrangement.size).to_a
-    rows.include?(head[1].to_i) && rows.include?(tail[1].to_i)
+     rows = (1..player_arrangement.size).to_a
+     rows.include?(head[1].to_i) && rows.include?(tail[1].to_i)
   end
 
-  def get_valid_coordinates
+  def get_valid_coordinates(ship, coordinates)
     coord = coordinate.split(" ")
     ship_head = [coord[0][0], coord[0][1..2]]
     ship_tail = [coord[1][0], coord[1][1..2]]
@@ -97,9 +97,23 @@ class Player
     set_valid(ship_head, ship_tail, ship)
   end
 
-  def set_middle(ship, ship_head, ship_tail)
+  def set_middle(ship, head, tail)
+    row = abcd.index(head[0].upcase)
+    column = head[1].to_i - 1
+    ship_head = [row, column]
+    ship.coordinates << ship_head
+    full_ship(ship, head, tail, row, column)
   end
 
-  def set_valid(ship_head, ship_tail, ship)
+  def full_ship(ship, head, tail, row, column)
+    if horizontal?(head, tail)
+      (ship.size - 1).times do |i|
+        ship.coordinates << [row, column + i + 1]
+      end
+    else
+      (ship.size - 1).times do |i|
+        ship.coordinates << [row + i + 1, column]
+      end
+    end
   end
 end
