@@ -1,101 +1,70 @@
-require './lib/grid'
 require './lib/ship'
-require './lib/placement_module'
-require 'pry'
+require './lib/grid'
+require './lib/messages'
 
 class Computer
 
-  include Placement
+  include Messages
 
-  attr_reader :computer_arrangement,
-              :computer_shots,
-              :ships,
-              :shots
-  attr_accessor :all_ship_coordinates
+  attr_reader :board
 
-  def initialize(board_size = 4, number_of_ships = 2)
-    @computer_arrangement = Grid.new
-    @computer_shots = Grid.new
-    @ships = []
-    @all_ship_coordinates = []
-    @shots = []
-    place(board_size, number_of_ships)
+  def initialize
+    @board = Grid.new
+    startup_message
+    two_boat_head
   end
 
-  def ship_placement(ship, board_size)
-    assign_head(ship, board_size)
-    validate_coordinates(ship, board_size)
+  def two_boat_coord
+    board.ships[0].coordinates
   end
 
-  def assign_head(ship, board_size)
-    if horizontal?
-      horizontal_ship(ship, board_size)
+  def three_boat_coord
+    board.ships[1].coordinates
+  end
+
+  def two_boat_head
+    row = rand(0..3)
+    column = rand(0..3)
+    two_boat_coord << [row, column]
+    two_boat_tail
+  end
+
+  def two_boat_tail
+    head = two_boat_coord[0]
+    valid_tail = []
+    row = rand(0..3)
+    col = rand(0..3)
+    if valid_tail(row, col, head)
+      two_boat_coord << [row, col]
     else
-      vertical_ship(ship, board_size)
+      two_boat_tail
+    end
+    three_boat_head
+  end
+
+  def valid_tail(row, col, head)
+    if row == head[0] && (col - head[1] == 1 || head[1] - col == 1)
+      return true
+    elsif col == head[1] && (row - head[0] == 1 || head[0] - row == 1)
+      return true
+    elsif (row - head[0] == 1 || head[0] - row == 1) || (col - head[1] == 1 || head[1] - col == 1)
+      return true
+    else
+      return false
     end
   end
 
-  def horizontal_ship(ship, board_size)
-    column = rand(board_size - ship.size)
-    row = rand(board_size)
-    ship << [row, column]
-    assign_tail(ship, true)
-  end
-
-  def vertical_ship(ship, board_size)
-    column = rand(board_size)
-    row = rand(board_size - ship.size)
-    ship << [row, column]
-    assign_tail(ship, false)
-  end
-
-  def horizontal?
-    random = rand(2).to_i
-    random.zero?
-  end
-
-  def assign_tail(ship, horizontal)
-    row = ship.coordinates.first.first
-    column = ship.coordinates.first.last
-    full_ship(ship, horizontal, row, column)
-  end
-
-  def full_ship(ship, horizontal, row, column)
-    if horizontal
-      (ship.size - 1).times do |i|
-        ship.coordinates << [row, column + i + 1]
-      end
+  def three_boat_head
+    row = rand(0..3)
+    col = rand(0..3)
+    if two_boat_coord.include? [row, col]
+      three_boat_head
     else
-      (ship.size - 1).times do |i|
-        ship.coordinates << [row + i + 1, column]
-      end
+      three_boat_tail(row, col)
     end
   end
 
-  def validate_coordinates(ship, board_size)
-    @all_ship_coordinates << ship.coordinates
-    if @all_ship_coordinates.flatten(1).uniq!.nil?
-      @ships << ship
-    else
-      @all_ship_coordinates.delete_at(-1)
-      ship.reset
-      ship_placement(ship, board_size)
-    end
+  def three_boat_tail(row, col)
   end
 
-  def shoot
-    max = computer_shots.size
-    shot = [rand(max).to_i, rand(max).to_i]
-    validate_shot(shot)
-  end
-
-  def validate_shot(shot)
-    if @shots.include?(shot)
-      shoot
-    else
-      @shots << shot
-    end
-  end
 end
-# binding.pry
-""

@@ -1,14 +1,20 @@
-require './lib/messages_module'
-require './lib/computer'
 require './lib/grid'
-require './lib/player'
 require './lib/ship'
+require './lib/messages'
+require './lib/computer'
+require './lib/player'
 
-class Runner
+class Game
+
   include Messages
 
-  def initialize
+  attr_accessor :player,
+                :computer
 
+  def initialize
+    @player = nil
+    @computer = nil
+    @game_over = false
   end
 
   def start
@@ -26,7 +32,7 @@ class Runner
     elsif quit?(input)
       quits
     elsif play?(input)
-      start_game
+      player_setup
     end
   end
 
@@ -53,20 +59,15 @@ class Runner
     selection(input)
   end
 
-  def start_game
-    @start_time = Time.now
-    start_players
+  def player_setup
+    player = Player.new
+    computer = Computer.new
   end
 
-  def start_players
-    @computer = Computer.new
-    startup_message
-    @player = Player.new
-  end
-
-  # shot sequences
-  ## display board states and shot/miss/hit counts
-  # end game check
-
+# ships.each do |ship|
+  #comp_ships << ship.coordinates
+  #end
+  #comp_ships should look like
+  #[[[0,1],[1,1]], [[1,1],[1,2],[1,3]]]
 
 end

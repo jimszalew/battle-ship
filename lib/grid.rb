@@ -1,40 +1,37 @@
+require './lib/ship'
+
 class Grid
- attr_reader :size,
-             :value,
-             :grid
 
- def initialize(size = 4, value = " ")
-   @size = size
-   @value = value
-   @grid = Array.new(4) { Array.new(4, " ") }
- end
+  attr_reader :grid,
+              :ships
 
- def columns(size)
-   (1..size).to_a
- end
+  def initialize
+    @ships = [Ship.new(2), Ship.new(3)]
+    @grid = Array.new(4) {Array.new(4, " ")}
+  end
 
- def rows
-   ("A".."D").to_a
- end
+  def columns
+    (1..4).to_a
+  end
 
- def print_grid
-   puts border.join
-   print_numbers
-   print_letters
-   puts border.join
- end
+  def rows
+    ("A".."D").to_a
+  end
 
- def border
-   Array.new(size, "===")
- end
+  def print_grid
+    puts "===" * 4
+    print_numbers
+    print_letters
+    puts "===" * 4
+  end
 
- def print_numbers
-   puts "* " + columns(size).join("  ")
- end
+  def print_numbers
+    puts "* " + columns.join("  ")
+  end
 
- def print_letters
-   grid.each_with_index do |row, idx|
-     puts rows[idx] + " " + row.join("  ")
-   end
- end
+  def print_letters
+    grid.each_with_index do |row, idx|
+      puts rows[idx] + " " + row.join("  ")
+    end
+  end
 end

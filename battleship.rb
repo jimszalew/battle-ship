@@ -1,8 +1,8 @@
-require './lib/runner'
+require './lib/game'
 
 class Battleship
   def initialize
-    Runner.new.start
+    Game.new.start
   end
 end
 

@@ -1,11 +1,11 @@
 module Messages
 
   def welcome
-    puts "Welcome to BATTLESHIP\n"
+    puts "Welcome to BATTLESHIP\n\n"
   end
 
   def request_input_message
-    puts "Would you like to (p)lay, read the (i)nstructions, or (q)uit?"
+    puts "Would you like to (p)lay, read the (i)nstructions, or (q)uit?\n> "
   end
 
   def read_instructions
@@ -13,7 +13,7 @@ module Messages
   end
 
   def quits
-    puts "Few are cut out for the life of a navy gunner."
+    puts "That's cool, maybe later?"
   end
 
   def invalid_input
@@ -24,12 +24,12 @@ module Messages
     puts "I have laid out my ships on the grid. You now need to layout your two ships. The first is two units long and the second is three units long. The grid has A1 at the top left and D4 at the bottom right. Ships CAN NOT: wrap around the map, overlap each other, or be placed diagonally.\n\n"
   end
 
-  def two_unit_placement_message
-    puts "Enter the squares for the two-unit ship."
+  def head_coordinate_message
+    puts "Enter the first coordinate for your #{ship.size} unit ship."
   end
 
-  def three_unit_placement_message
-    puts "Enter the squares for the three-unit ship."
+  def tail_coordinate_message
+    puts "Enter the tail coordinate for your #{ship.size} unit ship."
   end
 
   def placement_error
