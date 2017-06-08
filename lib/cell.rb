@@ -1,8 +1,10 @@
 class Cell
 
-  attr_reader :coordinates
+  attr_reader :coordinates,
+              :input
 
-  def initialize
+  def initialize(input)
+    @input = input
     @coordinates = {}
   end
 

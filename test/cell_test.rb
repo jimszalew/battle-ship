@@ -5,14 +5,14 @@ require 'pry'
 class CellTest < Minitest::Test
 
   def test_it_exists
-    cell = Cell.new
+    cell = Cell.new('A1')
 
     assert_instance_of Cell, cell
   end
 
   def test_it_can_be_assigned_coordinates
-    cell = Cell.new
-    cell.assign('A1')
+    cell = Cell.new('A1')
+    cell.assign(cell.input)
     coordinates = cell.coordinates
 
     assert_instance_of Hash, coordinates
