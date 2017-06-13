@@ -6,6 +6,7 @@ class Board
 
   def initialize
     @cells = {}
+    make_cells
   end
 
   def make_cells
@@ -14,7 +15,7 @@ class Board
       row.map do |letter|
         column.map do |number|
           cell = Cell.new("#{letter}#{number}")
-          cells.store(cell.name, cell.coordinates.values)
+          cells.store(cell.name, {status: 'empty'})
         end
       end
   end

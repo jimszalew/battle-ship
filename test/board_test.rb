@@ -10,15 +10,17 @@ class BoardTest < Minitest::Test
     assert_instance_of Board, board
   end
 
-  def test_it_can_create_its_cells
+  def test_it_can_create_its_cells_and_cells_are_empty
     board = Board.new
     board.make_cells
 
     cells = board.cells
-    rand_key = 'B2'
 
     assert_instance_of Hash, cells
-    assert_instance_of Cell, cells[rand_key]
-    assert_equal 16, board.keys.count
+    assert_equal 16, cells.count
+    assert_equal 'empty', cells["A1"][:status]
+    assert_equal 'empty', cells["B2"][:status]
+    assert_equal 'empty', cells["C3"][:status]
+    assert_equal 'empty', cells["D4"][:status]
   end
 end
