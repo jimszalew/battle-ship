@@ -1,6 +1,5 @@
 require './test/test_helper'
 require './lib/cell'
-require 'pry'
 
 class CellTest < Minitest::Test
 
@@ -12,7 +11,7 @@ class CellTest < Minitest::Test
 
   def test_it_can_be_assigned_coordinates
     cell = Cell.new('A1')
-    cell.assign(cell.input)
+    cell.assign(cell.name)
     coordinates = cell.coordinates
 
     assert_instance_of Hash, coordinates
