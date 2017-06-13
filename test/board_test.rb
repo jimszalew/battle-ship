@@ -1,5 +1,6 @@
 require './test/test_helper'
 require './lib/board'
+require 'pry'
 
 class BoardTest < Minitest::Test
 
@@ -11,6 +12,8 @@ class BoardTest < Minitest::Test
 
   def test_it_can_create_its_cells
     board = Board.new
+    board.make_cells
+
     cells = board.cells
     rand_key = 'B2'
 
